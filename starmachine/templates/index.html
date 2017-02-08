@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>事大 - 娱乐社交神器</title>
+    <meta name="description" content="事大 - 最会玩儿的粉丝社区 star428 www.star428.com">
+    <meta name="keywords" content="事大 事儿大 star428 www.star428.com">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="http://pic.star428.com/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <!--[if ! lt IE 9 ]><!-->
+    <link href="http://pic.star428.com/static/css/shida.css" rel="stylesheet">
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <link href="http://pic.star428.com/static/css/shida-ie8.css" rel="stylesheet">
+    <![endif]-->
+
+    <link href="http://pic.star428.com/static/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="http://pic.star428.com/static/js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+        @media (min-width: 1200px) {
+            .container {
+                width: 1280px;
+            }
+        }
+        @media (min-width: 768px) {
+            #page-top .container-fluid {
+                padding-left:100px;
+                padding-right:100px;
+            }
+            #product {
+                padding-top: 0;
+                padding-bottom:0;
+                height:750px;
+            }
+            #product {
+                /*background: url(../img/star-bg.jpg) no-repeat center;*/
+                background: #f4f4f4;
+                position:relative;
+                background-size:cover;
+            }
+
+            #product .product-intro {
+                padding-top:192px;
+            }
+
+            #product .pos-banner {
+                background: url(http://pic.star428.com/static/img/iphone_shell.png) no-repeat -26px -25px;
+                height: 619px;
+                margin-left:0;
+                left:0;
+                position:relative;
+            }
+
+            #product p {
+                display:inline-block;
+                margin-right:40px;
+            }
+            #product .product-icon {
+                 margin-top:50px;
+            }
+            .carousel-indicators {
+                top:530px;
+            }
+
+            #product .pull-left {
+                margin-right:40px;
+            }
+
+            #about .team-bg {
+                background: #333;
+                height:100%;
+                margin-top:0;
+            }
+
+            .map {
+                background: url(http://pic.star428.com/static/img/map.png);
+            }
+
+            #intro button:hover { background-color: #2f8fd7; outline:none;color:#fff;}
+            #intro button:focus { background-color: #2f8fd7; outline:none;color:#fff;}
+            /*.nav li a:active { background-color: transparent; outline:none;}*/
+            /*.btn-circle {*/
+                /*background:url(/static/img/down.png) no-repeat;*/
+            /*}*/
+            .navbar-custom.top-nav-collapse {
+                padding: 0;
+                border-bottom: 1px solid #eee;
+                background: #fff;
+            }
+            .navbar-custom.top-nav-collapse .nav li a{
+                color: #666;
+                -webkit-transition: color .5s ease-in-out;
+                -moz-transition: color .5s ease-in-out;
+                transition: color .5s ease-in-out;
+            }
+            .navbar-brand img {
+                display: inline-block;
+            }
+            .logo-name {
+                margin-left:18px;
+                font-size:26px;
+                color:#fff;
+                vertical-align: middle;
+            }
+            .navbar-custom.top-nav-collapse .logo-name {
+                color:#666;
+            }
+            .carousel-indicators .active {
+                background-color: #333;
+            }
+            .download-div {
+                margin-top:30px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .process-tree {
+                display: none;
+            }
+            #about .team-bg{
+                margin-top: 0;
+            }
+            #product .product-icon {
+                display: none;
+            }
+            .download-div {
+                display: none;
+            }
+            .logo-name {
+                display: none;
+            }
+        }
+        .icon-text {
+            display: block;
+            text-align:center;
+            font-size:14px;
+            color:#777;
+            margin-top:12px;
+        }
+        .btn-download {
+            background-color:#2f8fd7;
+            font-size:18px;
+            color:#fff;
+            width:200px;
+            border-radius:20px;
+            height:45px;
+            border:none;
+        }
+
+        /*.modal-dialog{*/
+            /*display: table-cell;*/
+            /*vertical-align:middle;*/
+        /*}*/
+        #download-app .modal-content{
+            display:block;
+            width:340px;
+            margin:0 auto;
+            height:376px;
+        }
+
+        #download-app .modal-body img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+            border:#ddd 1px solid;
+            padding:10px;
+        }
+        #download-app .down-title {
+            color: #333;
+            font-size: 18px;
+            /*width: 200px;*/
+            /*margin: 24px auto 30px;*/
+            margin-top:24px;
+            text-align:center;
+        }
+        #download-app .down-desc {
+            color: #999;
+            font-size: 12px;
+            /*width:200px;*/
+            /*margin: 0 auto;*/
+            margin-top:22px;
+            text-align: center;
+        }
+        #download-app .modal-header {
+            border: none;
+            overflow: hidden;
+        }
+        #download-app .modal-footer {
+            border: none;
+        }
+
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?384936dfd348f1148b8cfbfb3ec65503";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars-new"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img src="http://pic.star428.com/static/img/logo_white.png" alt="">
+                    <span class="logo-name">事大</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-main-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll SansGBW3" href="#product">产品介绍</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll SansGBW3" href="#about">关于我们</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll SansGBW3" href="#contact">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="intro" class="text-center">
+        <div class="templatemo_headerimage">
+            <div class="flexslider">
+                <ul class="slides header-ul">
+                    <li>
+                        <img src="http://pic.star428.com/static/img/intro-bg.jpg" alt="banner 1" />
+                    </li>
+                    <li>
+                        <img src="http://pic.star428.com/static/img/banner2.jpg" alt="banner 2" />
+                    </li>
+                    <li>
+                        <img src="http://pic.star428.com/static/img/banner3.jpg" alt="banner 3" />
+                    </li>
+                </ul>
+                <div class="slider-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-md-offset-2 col-sm-offset-3">
+                                <!--<div class="brand-heading ">-->
+                                    <!--<img src="http://pic.star428.com/static/img/brand-head.png" class="img-responsive " alt="title"/>-->
+                                <!--</div>-->
+                                <!---->
+                                <!--<div class="line"></div>-->
+                                <h1 style="font-size:50px;color:#fff;"><strong>事大，专门聊八卦的娱乐社交神器</strong></h1>
+                                <h3 class="huxiaobo-meixin" style="color:#c1c1c1;font-size:20px;">不聊八卦之事，何遣有涯之生</h3>
+                                <div class="download-div">
+                                    <button class="btn btn-default btn-download" data-target="#download-app" data-toggle="modal">下载手机APP</button>
+                                </div>
+                                <a href="#product" class="btn btn-circle page-scroll"></a>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#" class="btn btn-blue "><i class="fa fa-apple fa-fw"></i> <span class="network-name">Apple</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.star428.stars" class="btn btn-default "><i class="fa fa-android fa-fw"></i> <span class="network-name ">Android</span></a>
+                                    </li>
+                                </ul>
+                                <a href="#product" class="btn btn-arrow page-scroll"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="product">
+        <div class="container">
+            <div class="row">
+                <div class="product-intro col-md-9">
+                    <h3 style="font-size:40px;color:#222;">产品介绍</h3>
+                    <p style="margin-top:40px;font-size:18px;color:#555;">娱乐社交产品，专门为喜欢娱乐、喜欢聊八卦的社群服务</p>
+                    <div class="product-icon">
+                        <p>
+                            <img src="http://pic.star428.com/static/img/dirt_icon.png" alt="聊八卦">
+                            <span class="icon-text">聊八卦</span>
+                        </p>
+                        <p>
+                            <img src="http://pic.star428.com/static/img/room_icon.png" alt="房间">
+                            <span class="icon-text">房间</span>
+                        </p>
+                        <p>
+                            <img src="http://pic.star428.com/static/img/welfare_icon.png" alt="发福利">
+                            <span class="icon-text">发福利</span>
+                        </p>
+                        <p>
+                            <img src="http://pic.star428.com/static/img/reward_icon.png" alt="打赏">
+                            <span class="icon-text">打赏</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="pos-banner col-md-3">
+                    <div class="display-img">
+                        <div class="carousel slide" id="myCarousel">
+                            <!-- 轮播（Carousel）指标 -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+                            <!-- 轮播（Carousel）项目 -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="http://pic.star428.com/static/img/p_bar1.png" alt="" style="width:256px; height:450px;">
+                                </div>
+                                <div class="item">
+                                    <img src="http://pic.star428.com/static/img/p_bar2.png" alt="" style="width:256px; height:450px;">
+                                </div>
+                                <div class="item">
+                                    <img src="http://pic.star428.com/static/img/p_bar3.png" alt="" style="width:256px; height:450px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="team-bg text-center">
+            <h3 style="font-size:40px;color:#fff;padding-top:70px;margin-top:0;">关于我们</h3>
+            <div class="container clearfix">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 process-tree" style="background:url(http://pic.star428.com/static/img/process_tree.png) no-repeat; height:716px;">
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="team text-left">
+                            <div class="col-md-6 col-sm-4">
+                                <img src="http://pic.star428.com/static/img/team-icon_01.png" class="img-responsive pull-left" alt="">
+                                <P class="huxiaobo-meixin f18 b">霸王珊</P>
+                                <p class="p-pt">双子座<br/>#80后# 创始人兼CEO<br/>事大产品经理</p>
+                            </div>
+                            <div class="col-md-6 col-sm-4">
+                                <img src="http://pic.star428.com/static/img/team-icon_02.png" class="img-responsive pull-left" alt="">
+                                <p class="huxiaobo-meixin f18 b">lam</p>
+                                <p class="p-pt">金牛座<br/>#90后# 移动端攻城狮<br/>IT暖男萌大叔</p>
+                            </div>
+                            <div class="col-md-6 col-sm-4">
+                                <img src="http://pic.star428.com/static/img/team-icon_03.png" class="img-responsive pull-left" alt="">
+                                <p class="huxiaobo-meixin f18 b">小朱</p>
+                                <P class="p-pt">巨蟹座
+                                    <br/>#90后# 事大后端开发</P>
+                            </div>
+                            <div class="col-md-6 col-sm-4">
+                                <img src="http://pic.star428.com/static/img/team-icon-05.png" class="img-responsive pull-left" alt="">
+                                <p class="huxiaobo-meixin f18 b">Charles</p>
+                                <p class="p-pt">天秤座
+                                    <br/>#90后# UI设计</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background:#f4f4f4;padding-top:78px;text-align:center;">
+        <div class="container">
+            <h2 style="color:#222;font-size:40px;margin-bottom:50px;">联系我们</h2>
+            <div class="row">
+                <ul class="col-md-12" style="text-align:left;">
+                    <p style="color:#555;font-size:18px;line-height:1.75em;">北京夸克时代科技有限公司是一家专注于移动互联网
+                    的公司，目前旗下主打产品为事大APP，专门为喜欢娱乐、喜欢l聊八卦的社群服务。公司团队核心成员因为相同爱好走到一起,期待更多志同道合的小伙伴一起加入！</p>
+                </ul>
+            </div>
+            <div class="map"></div>
+        </div>
+    </section>
+
+    <footer style="background:#262628;height:200px;">
+        <ul style="text-align:center;padding-left:0;">
+            <li>
+                <img src="http://pic.star428.com/static/img/logo_blk.png">
+            </li>
+            <li style="font-size:14px;color:#666;margin-top:18px;">
+                <span><strong>http://www.star428.com</strong></span>
+            </li>
+            <li style="font-size:14px;color:#666;margin-top:18px;">
+                <span><strong>京ICP备15020812号</strong></span>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- download-app -->
+    <div class="modal fade" id="download-app" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
+                    </div>
+                    <div class="modal-body">
+                        <img src="http://pic.star428.com/static/img/qrcode.png">
+                        <h5 class="down-title">手机客户端下载</h5>
+                        <p class="down-desc">扫描二维码下载事大客户端</p>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="http://pic.star428.com/static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://pic.star428.com/static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://pic.star428.com/static/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="http://www.youziku.com/UserDownFile/jquery.md5.js"></script>
+    <script src="http://pic.star428.com/static/js/shida.js"></script>
+    <script src="http://pic.star428.com/static/js/jquery.flexslider.js"></script>
+    <script>
+        function reposition() {
+            var modal = $(this),
+            dialog = modal.find('.modal-dialog');
+            modal.css('display', 'block');
+
+            // Dividing by two centers the modal exactly, but dividing by three
+            // or four works better for larger screens.
+            dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+        }
+        // Reposition when a modal is shown
+        $('#download-app').on('show.bs.modal', reposition);
+    </script>
+</body>
+
+</html>

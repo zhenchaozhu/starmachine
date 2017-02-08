@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.star428.com/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>撸CP</title>
+    <style>
+        *{margin:0; padding:0; font-style:normal;}
+        .container{overflow:hidden;}
+        .slider{overflow:hidden; position:relative;}
+        .swiper{height:180px; width:100%; position:relative;}
+        .swiper .item {position:relative;}
+        .swiper .item a {display: block;}
+         a{color: #607fa6;text-decoration: none;}
+         .swiper .item .img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            background: center center no-repeat;
+            background-size: cover;
+         }
+         .swiper .item .desc {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1.4em;
+            font-size: 16px;
+            padding: 20px 50px 12px 13px;
+            background-image: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,.7) 100%);
+            background-image: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.7) 100%);
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0,0,0,.5);
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-wrap: normal;
+        }
+        .tab_hd{height: 44px;}
+        .tab_hd_inner {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            font-size: 0;
+            background-color: #f2f2f2;
+        }
+        .tab_hd_inner .item.active {
+            color: #21b100;
+        }
+        .tab_hd_inner .item {
+            height: 44px;
+            line-height: 44px;
+            width: 100%;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            box-flex: 1;
+            flex: 1;
+            font-size: 15px;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .tab_hd_inner .item {
+            height: 44px;
+            line-height: 44px;
+            width: 100%;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            box-flex: 1;
+            flex: 1;
+            font-size: 15px;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .article_list {
+            background-color: #fff;
+        }
+        .list_item {
+            display: block;
+            padding: 15px 15px 10px 10px;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .list_item .cover {
+            float: left;
+            margin-right: 10px;
+        }
+        .list_item .cover .img {
+            display: block;
+            width: 80px;
+            height: 60px;
+        }
+        .list_item .cont {
+            overflow: hidden;
+        }
+        .list_item .cont .title {
+            font-weight: 400;
+            font-size: 16px;
+            color: #000;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            word-wrap: normal;
+        }
+        .list_item .cont .desc {
+            font-size: 13px;
+            color: #999;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-height: 1.3;
+        }
+        .list_item:after {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid #e2e2e2;
+            -webkit-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+            -webkit-transform: scaleY(.5);
+            -ms-transform: scaleY(.5);
+            transform: scaleY(.5);
+            left: 10px;
+        }
+    </style>
+</head>
+<body id="" class="zh_CN">
+    <div class="container">
+        <div class="slider">
+            <div class="swiper">
+                <div class="item js_post">
+                    <a href="{{ focus_pic.link_uri }}">
+                        <div class="img js_img" style="background-image: url('{{ focus_pic.img_uri }}');"></div>
+                        <p class="desc js_title">{{ focus_pic.focus_desc }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="tab_bd">
+            <div class="article_list article_list_0">
+                {% for article in articles %}
+                    {% block article %}
+                        <a class="list_item js_post" href="{{ article.link_uri }}">
+                            <div class="cover">
+                                <img class="img js_img" src="{{ article.img_uri }}" alt="">
+                            </div>
+                            <div class="cont">
+                                <h2 class="title js_title">{{ article.article_title }}</h2>
+                                <p class="desc">{{ article.article_desc }}</p>
+                            </div>
+                        </a>
+                    {% end %}
+                {% end %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

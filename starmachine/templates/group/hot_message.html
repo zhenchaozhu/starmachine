@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+<title>{{ group.name }}</title>
+<link rel="stylesheet" href="http://pic.star428.com/group/css/style.css">
+</head>
+<body>
+<div class="main" >
+    <div class="download_bar">
+        <div class="logo"></div>
+        <article>事大，专业聊八卦神器。<br/>不聊八卦之事，何遣有涯之生</article>
+        <a class="download_link tc" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.star428.stars">立即下载</a>
+    </div>
+    <div class="imgbox">
+        <img src="{{ group.avatar_url }}">
+        <!--<img src="http://pic.star428.com/group/img/fanbingbing.png" alt="" />-->
+    </div>
+    <div class="title_bar tc">{{ group.name }}</div>
+    <div class="content">
+        <ul>
+            {% for message in messages %}
+                {% block message %}
+                    {% if message.get('object_name') == 'RC:VcMsg' %}
+                        <li>
+                            <div class="fl w85">
+                                <div class="photo fl">
+                                    <img src="{{ message.get('avatar') }}" alt="image"  />
+                                </div>
+                                <div class="con w90 fl">
+                                    <p class="f12">{{ message.get('user_name') }}</p>
+                                    <p class="f12 grey">{{ message.get('create_time') }}</p>
+                                    <p class="f14">
+                                        <div class="myAudio" id="myAudio" >
+                                            <div id="time" class="time">
+                                                {{ message.get('content').get('duration') }}<sup>``</sup>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="fr w15">
+                                <i></i>
+                                <div class="heart">
+                                    <img alt="" src="http://pic.star428.com/group/img/icon_chat_heart_gray.png">
+                                </div>
+                                <p class="num">{{ message.get('liked_amount') }}</p>
+                            </div>
+                        </li>
+                    {% elif message.get('object_name') == 'RC:TxtMsg' %}
+                        <li>
+                            <div class="fl w85">
+                                <div class="photo fl">
+                                    <span></span>
+                                    <img src="{{ message.get('avatar') }}" alt="image"  />
+                                    <!--<img src="http://pic.star428.com/group/img/portrait.png" alt="image"  />-->
+                                </div>
+                                <div class="con w85 fl">
+                                    <p class="f12">{{ message.get('user_name') }}</p>
+                                    <p class="f12 grey">{{ message.get('create_time') }}</p>
+                                    <p class="info f14">{{ message.get('content').get('content') }}</p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="fr w15">
+                                <i class="sign"></i>
+                                <div class="heart">
+                                    <img alt="" src="http://pic.star428.com/group/img/icon_chat_heart_gray.png">
+                                </div>
+                                <p class="num">{{ message.get('liked_amount') }}</p>
+                            </div>
+                        </li>
+                    {% end %}
+                {% end %}
+            {% end %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

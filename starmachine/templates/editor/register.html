@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>注册-创业班主任编辑器</title>
+    <meta NAME="ROBOTS" CONTENT="INDEX,FOLLOW">
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <link href="http://static.135editor.com/cache/bootstrap_3.css" rel="stylesheet" type="text/css" >
+    <link href="http://static.135editor.com/cache/ec2a793a4e.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" type="text/css" href="http://static.135editor.com/css/font-awesome.min.css" />
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/modal.js"></script>
+</head>
+<body>
+	<header id="top" class="header">
+        <nav role="navigation" class="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Navbar-Header -->
+                        <div class="navbar-header">
+                            <!-- Text-Logo -->
+                            <a title="创业班主任编辑器，操作简单才是硬道理" class="navbar-brand scrollto" href="http://www.star428.com/editor/">
+                                <!--<img src="http://img.wx135.com/135editor/tpl/logo2.png" alt="135编辑器" style="height:32px;">-->
+                                <span>创业班主任编辑器</span>
+                            </a>
+                        </div><!-- /End Navbar-Header -->
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a data-target="#login" data-toggle="modal">登录</a>
+                            </li>
+                            <li>
+                                <a href="/users/register" target="_blank">注册</a>
+                            </li>
+                        </ul>
+                    </div><!-- /End Col -->
+                </div><!-- /End Row -->
+            </div><!-- /End Container -->
+        </nav><!-- /End Sticky Navigation -->
+    </header>
+
+    <div id="maincontent" class="clearfix">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+            <div class="sign-inner">
+                <h3>注册</h3>
+                <hr>
+                <!-- onsubmit="return ajaxSubmitForm(this);"  -->
+                <form class="reg-block" role="form" id="register-form"  method="post" action="/users/register" >
+                    <style>
+                    .reg-block {
+                        background: none repeat scroll 0 0 #fefefe;
+                        border: 1px solid #eee;box-shadow: 0 0 3px #eee;color: #555;padding: 30px;
+                    }
+                    .reg-block .input-group-addon {
+                        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+                        color: #bbb;min-width: 120px;text-align: left;
+                    }
+                    </style>
+                    <div class="form-group alert alert-danger help-block hidden" id="register_errorinfo"></div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 control-label">邮箱</label>
+                        <div class="col-sm-9">
+                          <input type="email"  required="required" onblur="checkemail(this)" placeholder="邮箱" name="data[User][email]"  id="register-email" maxlength="32"  class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 control-label">密码</label>
+                        <div class="col-sm-9">
+                          <input type="password"  required="required" placeholder="密码" id="password"  class="form-control margin-bottom-xs" minlength="6" maxlength="15" name="data[User][password]">
+                          <!--onkeypress="detectCapsLock(event, this)"  -->
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 control-label">确认密码</label>
+                        <div class="col-sm-9">
+                          <input type="password" equalTo="#password"  required="required" placeholder="确认密码" id="repeat-password" class="form-control" minlength="6" maxlength="15" name="data[User][password_confirm]">
+                        </div>
+                    </div>
+                    <div class="checkbox" style="margin-left: 15px">
+                        <button class="btn btn-red btn-submit" type="submit">注册</button>
+                    </div>
+                    <hr>
+                    <div class="">
+                        <h4>已有账号 &nbsp; <a data-toggle="modal" data-target="#login">登录</a></h4>
+                        <div></div>
+                    </div>
+
+                    <script type="text/javascript" src="/js/jquery/jquery.validate.js"></script>
+                    <script type="text/javascript" src="/js/jquery/i18n/messages_zh.js"></script>
+                    <script  type="text/javascript">
+                    $('.btn-submit').on('click', function() {
+                        alert('注册功能正在开发中，敬请期待。');
+                    });
+                    $(function(){
+                        $('#UserEmail').focus();
+                    });
+                    var lastusername = lastpassword = lastemail = lastinvitecode = '';
+
+                    function change_captcha(){
+                        $('#register-captcha').attr('src','/users/captcha?_='+randomString(8));
+                    }
+
+                    function checkemail(obj) {
+                        var email = trim($(obj).val());
+                        if(email == '' || email == lastemail) {
+                            return;
+                        } else {
+                            lastemail = email;
+                        }
+                        ajaxAction('/users/checkemail?email=' + email, null,null,function(request){
+                            if(request.error){
+                                alert(request.error);
+                            }
+                        });
+                    }
+
+                    function trim(str) {
+                        return str.replace(/^\s*(.*?)[\s\n]*$/g, '$1');
+                    }
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div><!-- //end maincontent -->
+
+    <footer></footer>
+
+    <div class="modal in" id="login" aria-hidden="false">
+        <div class="modal-dialog" style="width: 550px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">登录</h3>
+                </div>
+                <div class="modal-body" style="max-height: 882px; overflow-y: auto;">
+                    <div id="login-form">
+                        <style>
+                        .reg-page {
+                            background: none repeat scroll 0 0 #fefefe;
+                            border: 1px solid #eee;
+                            box-shadow: 0 0 3px #eee;
+                            color: #555;
+                            padding: 30px;
+                        }
+                        .reg-page .input-group-addon {
+                            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+                            color: #bbb;min-width: 120px;text-align: left;
+                        }
+                        .reg-header {border-bottom: 1px solid #eee;color: #555;margin-bottom: 35px;text-align: center;}
+                        </style>
+                        <form class="reg-page" action="/users/login" id="loginform" accept-charset="utf-8" method="post" role="form" onsubmit="return ajaxSubmitForm(this,'loginSuccess');">
+                            <div class="form-group help-block" id="login_errorinfo"></div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                        邮箱
+                                    </span>
+                                    <input type="hidden" name="data[User][referer]" value="/users/register">
+                                    <input type="email" required="required" name="data[User][email]" id="UserEmail" class="form-control" placeholder="邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                        密码
+                                    </span>
+                                    <input type="password" required="required" maxlength="15" name="data[User][password]" class="form-control" placeholder="密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="data[User][remember_me]" value="2592000">记住我
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="clearfix">
+                                    <button type="submit" class="btn-u btn btn-default">登录</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <p> <a target="_blank" href="/users/forgot" class="color-green">忘记密码？</a></p>
+                            <p>还没有注册 <a href="/users/register" target="_blank">注册</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

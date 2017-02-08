@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ room.name }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: #fff;
+        }
+        .container {
+            min-width: 300px;
+            padding: 0 10px;
+        }
+        header {
+            padding: 10px 0;
+            box-shadow: 0px 0px 5px #c3c1c1;
+        }
+        header .logo {
+            width: 35px;
+            height: 35px;
+        }
+        .btn {
+            cursor: pointer;
+            float: right;
+            width: 126px;
+            padding: 11px 14px;
+            display: block;
+            -moz-border-radius: .2em;
+            -webkit-border-radius: .2em;
+            border-radius: .2em;
+            border: none;
+            color: #fff;
+            background: #00c3fb;
+            text-align: center;
+            -webkit-appearance:none;
+            outline:none;
+            text-decoration: none;
+            font-size: 0.875em
+        }
+        a.btn:hover{
+            color: #fff;
+            background: #00c3fb;
+        }
+        .blue {
+            color: #1e97e6;
+        }
+        .blue2 {
+            color: #2c9ce7;
+        }
+        .gray {
+            color: #9d9d9d;
+        }
+        .gray02 {
+            color: #aaa;
+        }
+        .content {
+            text-align: center;
+            position: relative;
+        }
+        .content p {
+            line-height: 30px;
+        }
+        .line {
+            width: 90%;
+            border-top: 1px solid #bebebe;
+            height: 50px;
+            line-height: 50px;
+            margin: 50px auto 10px;
+        }
+        .fl {
+            float: left;
+            display: inline;
+        }
+        .clear {
+            clear: both;
+        }
+        .home_bg {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin: 5% auto;
+        }
+        .home{
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            z-index: 99;
+
+        }
+        .person {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: 25px;
+            left: 15px;
+        }
+        .f12 {
+            font-size: 0.75em
+        }
+        .f14 {
+            font-size: 0.875em
+        }
+        .f16 {
+            font-size: 1em
+        }
+        .ml10 {
+            margin-left: 10px;
+        }
+        .pt15 {
+            padding-top: 15%;
+        }
+        .b{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="fl">
+                <div class="logo fl">
+                    <a href="/">
+                        <img src="http://pic.star428.com/static/img/logo_share.png" alt="事儿大">
+                    </a>
+                </div>
+                <div class="fl ml10">
+                    <p class="blue b f16" style="font-family:huxiaobo-meixin298498;">事儿大</p>
+                    <p class="gray02 f12">最会玩儿的粉丝社区</p>
+                </div>
+            </div>
+            <div class="fr">
+                <!--<input type="button" value="下载事儿大客户端" class="btn">-->
+                <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.star428.stars" class="btn" alt="下载事儿大客户端">下载事儿大客户端</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </header>
+    <div class="container content">
+        <div class="title blue2 pt15">{{ room.name }}</div>
+        <div class="home_bg">
+            <div class="person">
+                {% if room.avatar %}
+                    <img src="{{ room.avatar_url }}" alt="头像">
+                {% else %}
+                    <img src="http://pic.star428.com/static/img/head.png" alt="头像">
+                {% end %}
+            </div>
+            <img class="home" src="http://pic.star428.com/static/img/home.png" alt="房间"/>
+        </div>
+
+        <p class="f14">入住人数：{{ int(room.user_amount) }}人</p>
+        <p class="f14">房主：{{ room.creator.name }}</p>
+        <div class="line gray" style="font-family:huxiaobo-meixin298498;">
+            我们只和懂的人呆在一个房间
+        </div>
+    </div>
+</body>
+
+</html>

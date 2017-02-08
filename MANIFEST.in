@@ -1,0 +1,1 @@
+recursive-include  starmachine *.html *.md *.txt .ico .xlsx *.css *.js *.png *.jpg *.swf
