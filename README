@@ -1,1 +1,5 @@
-star machine
+# 基于tornado开发的一个娱乐社区
+基于python打包的方式,将项目打包并且上传到内部pypi服务器  
+通过fabric发布到部署服务器,通过supervisor来管理运行的进程  
+数据库使用mysql,redis来做缓存  
+接入了webxin和alipay支付的接口  
